@@ -21,11 +21,4 @@ class Stack():
         return self.items
 
 
-s = Stack()
-s.push("A")
-s.push("B")
-s.push("C")
-s.push("D")
-print(s.get_stack())
-print(s.peek())
-print(s.is_empty())
+
