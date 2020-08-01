@@ -208,18 +208,61 @@ class LinkedList:
                 prev = cur
             cur = prev.next
 
+    def print_nth_from_last(self, n):
+        '''
+        Method to calculate the length of the list
+        '''
+        total_len = self.len_iterative()
+        print(total_len)
+
+        cur = self.head
+        while cur:
+            if total_len == n:
+                print(cur.data)
+                return cur
+            total_len -= 1
+            cur = cur.next
+        if cur is None:
+            return
+
+    def pointer_calculation(self, n):
+        p = self.head
+        q = self.head
+
+        count = 0
+        while q and count < n:
+            q = q.next
+            count += 1
+
+        if not q:
+            print(str(n) + 'is greater than number of nodes')
+
+        while p and q:
+            p = p.next
+            q = q.next
+        return p.data
+
 
 llist = LinkedList()
-llist.append(1)
-llist.append(6)
-llist.append(1)
-llist.append(4)
-llist.append(2)
-llist.append(2)
-llist.append(4)
+llist.append('A')
+llist.append('B')
+llist.append('C')
+llist.append('D')
+llist.append('E')
 
-llist.remove_duplicates()
-llist.print_list()
+print(llist.pointer_calculation(2))
+
+
+# llist = LinkedList()
+# llist.append(1)
+# llist.append(6)
+# llist.append(1)
+# llist.append(4)
+# llist.append(2)
+# llist.append(2)
+# llist.append(4)
+# llist.remove_duplicates()
+# llist.print_list()
 # llist = LinkedList()
 # llist.append("A")
 # llist.append("B")
