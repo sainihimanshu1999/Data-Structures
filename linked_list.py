@@ -306,13 +306,17 @@ class LinkedList:
             count += 1
         return True
 
+    def tail_to_head(self):
+        last = self.head
+        secondlast = None
 
-llist1 = LinkedList()
-llist1.append('R')
-llist1.append('A')
-llist1.append('D')
-llist1.append('A')
-llist1.append('R')
+        while last.next:
+            secondlast = last
+            last = last.next
+        last.next = self.head
+        secondlast.next = None
+        self.head = last
+
 
 llist2 = LinkedList()
 llist2.append('H')
@@ -321,8 +325,27 @@ llist2.append('L')
 llist2.append('L')
 llist2.append('O')
 
-print(llist1.is_palimdrome())
-print(llist2.is_palimdrome())
+llist2.print_list()
+llist2.tail_to_head()
+print('\n')
+llist2.print_list()
+
+# llist1 = LinkedList()
+# llist1.append('R')
+# llist1.append('A')
+# llist1.append('D')
+# llist1.append('A')
+# llist1.append('R')
+
+# llist2 = LinkedList()
+# llist2.append('H')
+# llist2.append('E')
+# llist2.append('L')
+# llist2.append('L')
+# llist2.append('O')
+
+# print(llist1.is_palimdrome())
+# print(llist2.is_palimdrome())
 
 
 # llist = LinkedList()
