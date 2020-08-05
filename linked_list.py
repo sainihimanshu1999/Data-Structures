@@ -192,7 +192,6 @@ class LinkedList:
 # llist_1.merge_sorted(llist_2)
 # llist_1.print_list()
 
-
     def remove_duplicates(self):
         cur = self.head
         prev = None
@@ -260,16 +259,81 @@ class LinkedList:
         else:
             return self.occurence_rec(node.next, data)
 
+    '''
+    Palindrome Problem
+    '''
 
-llist = LinkedList()
-llist.append(1)
-llist.append(2)
-llist.append(1)
-llist.append(3)
-llist.append(1)
-llist.append(3)
+    def is_palimdrome(self):
+        # Method 1
+        # s = ''
+        # p = self.head
 
-print(llist.occurence_rec(llist.head, 1))
+        # while p:
+        #     s += p.data
+        #     p = p.next
+        # return s == s[::-1]
+
+        # Method 2 using stack prperties in the list
+        # s = []
+        # p = self.head
+
+        # while p:
+        #     s.append(p.data)
+        #     p = p.next
+        # p = self.head
+        # while p:
+        #     data = s.pop()
+        #     if p.data != data:
+        #         return False
+        #     p = p.next
+        # return True
+        # Method 3 using two pointers P and Q
+        p = self.head
+        q = self.head
+        prev = []
+
+        i = 0
+        while q:
+            prev.append(q)
+            q = q.next
+            i += 1
+        q = (prev[-1])
+        count = 1
+        while count <= i//2 + 1:
+            if prev[-count].data != p.data:
+                return False
+            p = p.next
+            count += 1
+        return True
+
+
+llist1 = LinkedList()
+llist1.append('R')
+llist1.append('A')
+llist1.append('D')
+llist1.append('A')
+llist1.append('R')
+
+llist2 = LinkedList()
+llist2.append('H')
+llist2.append('E')
+llist2.append('L')
+llist2.append('L')
+llist2.append('O')
+
+print(llist1.is_palimdrome())
+print(llist2.is_palimdrome())
+
+
+# llist = LinkedList()
+# llist.append(1)
+# llist.append(2)
+# llist.append(1)
+# llist.append(3)
+# llist.append(1)
+# llist.append(3)
+
+# print(llist.occurence_rec(llist.head, 1))
 
 # llist = LinkedList()
 # llist.append('A')
