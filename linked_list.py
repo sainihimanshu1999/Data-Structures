@@ -242,15 +242,43 @@ class LinkedList:
             q = q.next
         return p.data
 
+    def occurence_it(self, data):
+        count = 0
+        cur = self.head
+
+        while cur:
+            if cur.data == data:
+                count += 1
+            cur = cur.next
+        return count
+
+    def occurence_rec(self, node, data):
+        if not node:
+            return 0
+        if node.data == data:
+            return 1 + self.occurence_rec(node.next, data)
+        else:
+            return self.occurence_rec(node.next, data)
+
 
 llist = LinkedList()
-llist.append('A')
-llist.append('B')
-llist.append('C')
-llist.append('D')
-llist.append('E')
+llist.append(1)
+llist.append(2)
+llist.append(1)
+llist.append(3)
+llist.append(1)
+llist.append(3)
 
-print(llist.pointer_calculation(2))
+print(llist.occurence_rec(llist.head, 1))
+
+# llist = LinkedList()
+# llist.append('A')
+# llist.append('B')
+# llist.append('C')
+# llist.append('D')
+# llist.append('E')
+
+# print(llist.pointer_calculation(2))
 
 
 # llist = LinkedList()
