@@ -317,18 +317,59 @@ class LinkedList:
         secondlast.next = None
         self.head = last
 
+    def sum_two_lists(self, llist):
+        p = self.head
+        q = llist.head
+        sum_llist = LinkedList()
+
+        carry = 0
+        while p or q:
+            if not p:
+                i = 0
+            else:
+                i = p.data
+            if not q:
+                j = 0
+            else:
+                j = q.data
+            s = i + j + carry
+            if s >= 10:
+                carry = 1
+                remainder = s % 10
+                sum_llist.append(remainder)
+            else:
+                carry = 0
+                sum_llist.append(s)
+            if p:
+                p = p.next
+            if q:
+                q = q.next
+        sum_llist.print_list()
+
+
+llist1 = LinkedList()
+llist1.append(7)
+llist1.append(0)
+llist1.append(0)
 
 llist2 = LinkedList()
-llist2.append('H')
-llist2.append('E')
-llist2.append('L')
-llist2.append('L')
-llist2.append('O')
+llist2.append(2)
+llist2.append(0)
+llist2.append(0)
 
-llist2.print_list()
-llist2.tail_to_head()
-print('\n')
-llist2.print_list()
+llist1.sum_two_lists(llist2)
+
+# llist2 = LinkedList()
+# llist2.append('H')
+# llist2.append('E')
+# llist2.append('L')
+# llist2.append('L')
+# llist2.append('O')
+
+# llist2.print_list()
+# llist2.tail_to_head()
+# print('\n')
+# llist2.print_list()
 
 # llist1 = LinkedList()
 # llist1.append('R')
