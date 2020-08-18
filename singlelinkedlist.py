@@ -371,22 +371,66 @@ class SingleLinkedList():
             p = p.link
         p.link = None
 
+    def concatenate(self, list2):
+        if self.start is None:
+            self.start = list2.start
+            return
+        if list2.start is None:
+            return
 
-llist = SingleLinkedList()
-llist.append(5)
-llist.append(20)
-llist.append(8)
-llist.append(12)
-llist.append(20)
-llist.append(49)
-llist.append(60)
-llist.append(87)
+        p = self.start
+        while p.link:
+            p = p.link
 
-# llist2 = SingleLinkedList()
-# llist2.append(7)
-# llist2.append(11)
-# llist2.append(14)
-# llist2.append(18)
+        p.link = list2.start
+
+    def insert_in_order(self, data):
+        temp = Node(data)
+
+        # if list is empty or node is to be inserted before the first node
+        if self.start == None or data < self.start.info:
+            temp.link = self.start
+            self.start = temp
+            return
+        p = self.start
+        while p.link is not None and p.link.info <= data:
+            p = p.link
+        temp.link = p.link
+        p.link = temp
+
+    def search(self, x):
+        if self.start is None:
+            print("List is empty")
+            return
+        p = self.start
+        pos = 1
+        while p is not None and p.link.info <= x:
+            if p.info == x:
+                break
+            pos += 1
+            p = p.link
+
+        if p is None or p.info != x:
+            print(x, ' is not found in the list')
+        else:
+            print(x, ' is at position', pos)
+
+
+# llist = SingleLinkedList()
+# llist.append(5)
+# llist.append(20)
+# llist.append(8)
+# llist.append(12)
+# llist.append(20)
+# llist.append(49)
+# llist.append(60)
+# llist.append(87)
+
+llist2 = SingleLinkedList()
+llist2.insert_in_order(17)
+llist2.insert_in_order(11)
+llist2.insert_in_order(24)
+llist2.insert_in_order(18)
 # llist.insert_before(14, 5)
 # llist.insert_after(25, 14)
 # llist.insert_at_position(75, 3)
@@ -397,6 +441,8 @@ llist.append(87)
 # llist.bubblesort_link()
 # # `llist.merge1(llist2)`
 # llist.merge_sort()
-llist.insert_cycle(20)
-llist.remove_cycle()
-llist.display_list()
+# llist.insert_cycle(20)
+# llist.remove_cycle()
+# llist.concatenate(llist2)
+llist2.search(17)
+llist2.display_list()
