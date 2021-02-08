@@ -39,3 +39,47 @@ if __name__ == '__main__':
     fptr.write('\n')
 
     fptr.close()
+
+
+
+'''
+Lesser Time Complexity Solution
+
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the arrayManipulation function below.
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    nm = input().split()
+
+    n = int(nm[0])
+
+    m = int(nm[1])
+    
+    lst = [0]*(n+1)
+
+    for _ in range(m):
+        a,b,k = (map (int, input().rstrip().split()))
+        lst[a-1] +=k
+        if b<=len(lst):
+            lst[b] -= k
+    
+    maxx = summ = 0
+    for i in lst:
+        summ += i
+        if summ>maxx:
+            maxx = summ
+        
+    fptr.write(str(maxx) + '\n')
+
+    fptr.close()
+
+'''
