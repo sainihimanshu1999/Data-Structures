@@ -5,8 +5,8 @@ top k frequent elements
 from _typeshed import ReadableBuffer
 from collections import Counter
 
-def frequent(nums):
-    count = Counter(nums)
+def frequent(nums,k):
+    freq = Counter(nums)
 
     result = []
 
